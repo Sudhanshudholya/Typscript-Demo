@@ -1,19 +1,20 @@
 import { Form, Formik, FormikHelpers } from 'formik'
 import Login from './Login'
 import { object, string } from 'yup'
-import { useLoginMutation } from '../Slice/AuthSlice'
-import { toast } from 'react-toastify'
+// import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
+import { useLoginMutation } from '../../Slice/Authslice'
+import toasts from '../../Toasts/Toasts'
 
 
 const LoginWrapper = () => {
 
     const navigate = useNavigate()
-
     const [login] = useLoginMutation()
+   
 
     const initialValues = {
-      userName: "",
+        username: "",
         password: "",
     }
 
@@ -22,24 +23,22 @@ const LoginWrapper = () => {
         password: string().required("Password is required")
     })
 
-    const handleSubmit = (values: any, {setSubmitting}: FormikHelpers) => {
-       console.log(values);
-
-       login(values)
-       .then((res) => {
-        if (res.data.status === "OK") {
-          localStorage.setItem("token", res.data.data.token);
-          toast.success("Login Successfully")
-          navigate("/")
-        } else {
-          toast.error("Invalid Creadentials")
-        }
-      }).catch((err) => {
-        console.log(err)
-        toast.error("Invalid Creadentials")
-      }).finally(() => {
-        setSubmitting(false);
-      })
+    const handleSubmit = (values: any, {setSubmitting}: FormikHelpers<any>) => {
+      
+     login(values).then((res) => {
+      if(res.data.status == 'OK'){
+        localStorage.setItem("Token", res.data.data.token)
+        toasts.successMsg("Login Successfully")
+        navigate('/layout')
+      }else{
+        toasts.errorMsg("Invalid Credential")
+      }
+     }).catch((err)=>{
+      toasts.errorMsg("Invalid credentials")
+      console.log(err);
+     }).finally(()=>{
+      setSubmitting(false)
+     })
        
     }
   return (
@@ -49,9 +48,7 @@ const LoginWrapper = () => {
         (formikProps) => {
             return(
                 <Form>
-                    <Login formikProps = {formikProps}>
-
-                    </Login>
+                    <Login formikProps = {formikProps}/>
                 </Form>
             )
         }

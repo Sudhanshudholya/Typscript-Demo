@@ -8,7 +8,7 @@ type Props = {
 }
 
 const Login = ({ formikProps }: Props) => {
-  const { values, handleChange, isSubmitting } = formikProps;
+  const { values, handleChange, isSubmitting, handleSubmit } = formikProps;
 
   // State to toggle password visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -31,14 +31,14 @@ const Login = ({ formikProps }: Props) => {
 
           <input
             type="text"
-            name="userName"
+            name="username"
             value={values.userName}
             onChange={handleChange}
             placeholder='Enter your Email'
             className='p-2 rounded border shadow-md'
           />
           <p className='text-red-600'>
-            <ErrorMessage name='userName' />
+            <ErrorMessage name='username' />
           </p>
         </div>
 

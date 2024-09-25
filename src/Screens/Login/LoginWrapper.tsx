@@ -1,7 +1,6 @@
 import { Form, Formik, FormikHelpers } from 'formik'
 import Login from './Login'
 import { object, string } from 'yup'
-// import { toast } from 'react-toastify'
 import { useNavigate } from 'react-router-dom'
 import { useLoginMutation } from '../../Slice/Authslice'
 import toasts from '../../Toasts/Toasts'
@@ -29,7 +28,7 @@ const LoginWrapper = () => {
       if(res.data.status == 'OK'){
         localStorage.setItem("Token", res.data.data.token)
         toasts.successMsg("Login Successfully")
-        navigate('/layout')
+        navigate('/layout/customer-list')
       }else{
         toasts.errorMsg("Invalid Credential")
       }

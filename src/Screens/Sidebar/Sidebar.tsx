@@ -29,7 +29,7 @@ const Sidebar = () => {
     }
 
     return (
-        <div className="relative h-full">
+        <div className="relative h-screen">
             {/* Sidebar Toggle Button for Mobile */}
             <button
                 className="md:hidden p-4 bg-blue-800 text-white fixed z-20"
@@ -57,14 +57,14 @@ const Sidebar = () => {
                 </div>
 
                 <div className="space-y-1">
-                    <Link to="add-customer">
+                    <Link to="customer-list">
                         <div className="p-4 hover:bg-blue-700">
-                            Customer Management
+                            Customers
                         </div>
                     </Link>
 
                     {/* Sales Dropdown */}
-                    <div className="relative">
+                    {/* <div className="relative">
                         <button
                             className="w-full p-4 hover:bg-blue-700 flex justify-between items-center"
                             onClick={toggleSalesDropdown}
@@ -90,19 +90,19 @@ const Sidebar = () => {
                                 </Link>
                             </div>
                         )}
-                    </div>
+                    </div> */}
 
-                    <Link to="content-management">
+                    {/* <Link to="content-management">
                         <div className="p-4 hover:bg-blue-700">
                             Content Management
                         </div>
-                    </Link>
+                    </Link> */}
 
-                    <Link to="invoice">
+                    {/* <Link to="invoice">
                         <div className="p-4 hover:bg-blue-700">
                             Invoice
                         </div>
-                    </Link>
+                    </Link> */}
 
                     <Link to="product-management">
                         <div className="p-4 hover:bg-blue-700">
@@ -110,17 +110,17 @@ const Sidebar = () => {
                         </div>
                     </Link>
 
-                    <Link to="token-management">
+                    {/* <Link to="token-management">
                         <div className="p-4 hover:bg-blue-700">
                             Token Management
                         </div>
-                    </Link>
+                    </Link> */}
 
-                    <Link to="abp-commission">
+                    {/* <Link to="abp-commission">
                         <div className="p-4 hover:bg-blue-700">
                             ABP Commission
                         </div>
-                    </Link>
+                    </Link> */}
 
                     {/* <Link to="service-management">
                 <div className="p-4 hover:bg-blue-700">

@@ -1,53 +1,63 @@
 import CustomerFormLayout from '../Layout/CustomerFormLayout';
-// import { toast } from 'react-toastify';
 import { object, string } from 'yup';
 import { useNavigate } from 'react-router-dom';
-import { Formik } from 'formik';
-
-
+import { Form, Formik } from 'formik';
+import { useAddCustomerMutation } from '../../../Slice/Customerslice';
+import toasts from '../../../Toasts/Toasts';
 
 export type CustomerFormValues = {
     name: string;
     email: string;
-    mobile: string;
+    contactNumber: string;
     role: string
-
 }
-
 
 const AddCustomerFormWrapper = () => {
 
+    const [addCustomer] = useAddCustomerMutation()
+    
     const navigate =useNavigate()
 
     const initialvalues: CustomerFormValues = {
         name: '',
         email: '',
-        mobile: '',
+        contactNumber: '',
         role: '',
     };
 
     const customerValidation = object({
         name: string().required('Name is required'),
         email: string().email('Invalid email format').required('Email is required'),
-        mobile: string()
-            .matches(/^[0-9]+$/, 'Mobile number must be numeric')
-            .min(10, 'Mobile number must be at least 10 digits')
-            .required('Mobile number is required'),
-        role: string().required('City is required'),
+        contactNumber: string().required('Contact number number is required'),
+        role: string().required('Role is required'),
     });
 
  const handleSubmit = (values: CustomerFormValues) => {
-        console.log(values);
+    const token=localStorage.getItem('Token')
+
+        addCustomer({userData: values ,token}).then((res: any)=>{
+            console.log(res)
+            if(res.data.msg){
+                toasts.successMsg("Customer added successfully")
+                navigate("/layout/customer-list")
+            }else{
+                toasts.errorMsg(res.data.msg)
+            }
+        }) .catch((err) => {
+            console.error(err);
+            toasts.errorMsg("Error occurred");
+        })
+        
     };
 
     return (
         <Formik initialValues={initialvalues} onSubmit={handleSubmit} validationSchema={customerValidation} >
-            {(formikProps) => {
-                return (
+            {({handleSubmit,...formikProps}:any) => 
+                <Form onSubmit={handleSubmit}>
+                    < CustomerFormLayout heading={"Add Customer"} buttonName="Add" formikProps={formikProps}/>
 
-                    < CustomerFormLayout heading={"Add Customer"} buttonName="Add" formikProps={formikProps} />
-                )
-            }}
+                </Form>
+            }
         </Formik>
     )
 }

@@ -9,7 +9,7 @@ type Props = {
 };
 
 const CustomerFormLayout = ({ formikProps, heading, buttonName }: Props) => {
-    const { values, handleChange, handleSubmit ,isSubmitting} = formikProps; // Destructure handleSubmit from formikProps
+    const { values, handleChange,isSubmitting} = formikProps; // Destructure handleSubmit from formikProps
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-50">
@@ -17,7 +17,7 @@ const CustomerFormLayout = ({ formikProps, heading, buttonName }: Props) => {
                 <h2 className="text-xl font-semibold text-center mb-6">{heading}</h2>
 
                 {/* Form wrapping the fields */}
-                <form onSubmit={handleSubmit}>
+                
                     {/* Name */}
                     <div className="mb-4">
                         <ATMTextField
@@ -48,17 +48,17 @@ const CustomerFormLayout = ({ formikProps, heading, buttonName }: Props) => {
                     {/* Mobile */}
                     <div className="mb-4">
                         <ATMTextField
-                            label="Mobile"
-                            placeholder="Enter your mobile"
-                            name="mobile"
-                            value={values.mobile}
+                            label="Contact Number"
+                            placeholder="Enter your Contact Number"
+                            name="contactNumber"
+                            value={values.contactNumber}
                             onChange={handleChange}
                             className="w-full"
                         />
-                               <p className='text-red-400'><ErrorMessage name='mobile' /></p>
+                               <p className='text-red-400'><ErrorMessage name='contactNumber' /></p>
                     </div>
 
-                    {/* City */}
+                    {/* Role */}
                     <div className="mb-4">
                         <ATMTextField
                             label="Role"
@@ -81,7 +81,7 @@ const CustomerFormLayout = ({ formikProps, heading, buttonName }: Props) => {
                             {buttonName}
                         </button>
                     </div>
-                </form>
+               
             </div>
         </div>
     );

@@ -1,52 +1,71 @@
 import CustomerFormLayout from '../Layout/CustomerFormLayout';
 import { object, string } from 'yup';
-import { Formik } from 'formik';
+import { Form, Formik } from 'formik';
+import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
+import { useEditCustomerMutation } from '../../../Slice/Customerslice';
+import toasts from '../../../Toasts/Toasts';
 
 
 
 export type CustomerFormValues = {
-    name: string;
-    email: string;
-    mobile: string;
-    city: string
+    name: string | null;
+    email: string | null;
+    contactNumber: string | null;
+    role: string | null
 };
 
+const EditCustomerFormWrapper = () => {
 
-const AddCustomerFormWrapper = () => {
-    
+    const token = localStorage.getItem("Token")
+    const [editcustomer] = useEditCustomerMutation()
+    const { id } = useParams()
+    const [query] = useSearchParams()
+    const navigate = useNavigate()
 
-    const initialvalues: CustomerFormValues = {
-        name: '',
-        email: '',
-        mobile: '',
-        city: '',
-    };
 
     const customerValidation = object({
         name: string().required('Name is required'),
         email: string().email('Invalid email format').required('Email is required'),
-        mobile: string()
+        contactNumber: string()
             .matches(/^[0-9]+$/, 'Mobile number must be numeric')
             .min(10, 'Mobile number must be at least 10 digits')
             .required('Mobile number is required'),
-        city: string().required('City is required'),
+        role: string().required('Role is required'),
     });
 
- const handleSubmit = (values: CustomerFormValues) => {
-        console.log(values);
+    const handleSubmit = (values: CustomerFormValues) => {
+        editcustomer({ userData: values, id, token })
+            .then((res: any) => {
+                console.log(res)
+                toasts.successMsg("User Edited Successfully")
+                navigate("/layout/customer-list")
+            })
     };
 
     return (
-        <Formik initialValues={initialvalues} onSubmit={handleSubmit} validationSchema={customerValidation} >
-            {(formikProps) => {
-                return (
+        <Formik 
+        initialValues={{
+            name: query.get('name'),
+            email: query.get('email'),
+            contactNumber: query.get('mobile'),
+            role: query.get('role'),
+        }} 
+        onSubmit={handleSubmit} validationSchema={customerValidation}
+         >
+            {({handleSubmit, ...formikProps}:any) =>
 
-                    < CustomerFormLayout heading={"Add Customer"} buttonName="Add"  formikProps={formikProps}/>
-                )
-            }}
+                <Form onSubmit={handleSubmit}>
+                    < CustomerFormLayout heading={"Edit Customer"} buttonName="Edit" formikProps={formikProps} />
+
+                </Form>
+
+
+
+            }
         </Formik>
     )
 }
 
-export default AddCustomerFormWrapper
+export default EditCustomerFormWrapper
+
 

@@ -6,7 +6,8 @@ const BASE_URL = import.meta.env.VITE_API_URL;
 export const apiSlice = createApi({
   reducerPath: 'api',
   baseQuery: fetchBaseQuery({ baseUrl: BASE_URL }),
-  endpoints: (builder) => ({}), // You can add or inject endpoints later
+  tagTypes: ['customer'],
+  endpoints: () => ({}), // You can add or inject endpoints later
 });
 
 export default apiSlice;

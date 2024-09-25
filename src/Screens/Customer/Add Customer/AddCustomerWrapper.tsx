@@ -15,7 +15,7 @@ export type CustomerFormValues = {
 const AddCustomerFormWrapper = () => {
 
     const [addCustomer] = useAddCustomerMutation()
-    
+
     const navigate =useNavigate()
 
     const initialvalues: CustomerFormValues = {
@@ -36,26 +36,23 @@ const AddCustomerFormWrapper = () => {
     const token=localStorage.getItem('Token')
 
         addCustomer({userData: values ,token}).then((res: any)=>{
-            console.log(res)
             if(res.data.msg){
                 toasts.successMsg("Customer added successfully")
                 navigate("/layout/customer-list")
             }else{
                 toasts.errorMsg(res.data.msg)
             }
-        }) .catch((err) => {
-            console.error(err);
-            toasts.errorMsg("Error occurred");
+        }).catch((err) => {
+          console.log(err);
+          toasts.errorMsg("Error")
         })
-        
     };
 
     return (
         <Formik initialValues={initialvalues} onSubmit={handleSubmit} validationSchema={customerValidation} >
             {({handleSubmit,...formikProps}:any) => 
                 <Form onSubmit={handleSubmit}>
-                    < CustomerFormLayout heading={"Add Customer"} buttonName="Add" formikProps={formikProps}/>
-
+                    < CustomerFormLayout heading={"Add Customer"} buttonName="Add" formikProps={formikProps} />
                 </Form>
             }
         </Formik>

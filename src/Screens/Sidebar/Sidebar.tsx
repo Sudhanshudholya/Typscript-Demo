@@ -104,7 +104,7 @@ const Sidebar = () => {
                         </div>
                     </Link> */}
 
-                    <Link to="product-management">
+                    <Link to="product-list">
                         <div className="p-4 hover:bg-blue-700">
                             Product Management
                         </div>

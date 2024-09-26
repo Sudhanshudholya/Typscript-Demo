@@ -5,8 +5,6 @@ import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
 import { useEditCustomerMutation } from '../../../Slice/Customerslice';
 import toasts from '../../../Toasts/Toasts';
 
-
-
 export type CustomerFormValues = {
     name: string | null;
     email: string | null;
@@ -27,7 +25,6 @@ const EditCustomerFormWrapper = () => {
         name: string().required('Name is required'),
         email: string().email('Invalid email format').required('Email is required'),
         contactNumber: string()
-            .matches(/^[0-9]+$/, 'Mobile number must be numeric')
             .min(10, 'Mobile number must be at least 10 digits')
             .required('Mobile number is required'),
         role: string().required('Role is required'),
@@ -53,14 +50,9 @@ const EditCustomerFormWrapper = () => {
         onSubmit={handleSubmit} validationSchema={customerValidation}
          >
             {({handleSubmit, ...formikProps}:any) =>
-
                 <Form onSubmit={handleSubmit}>
                     < CustomerFormLayout heading={"Edit Customer"} buttonName="Edit" formikProps={formikProps} />
-
                 </Form>
-
-
-
             }
         </Formik>
     )

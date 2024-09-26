@@ -108,7 +108,7 @@ const Login = ({ formikProps }: Props) => {
     <div className='flex justify-center items-center h-screen'>
       {/* Container for the form elements */}
       <div className='space-y-4 w-[400px] flex flex-col border border-gray-400 bg-slate-300 p-8'>
-        <h1 className='text-3xl font-bold text-center'>Admin Login</h1>
+        <h1 className='text-3xl font-bold text-center'>Login</h1>
 
         {/* Email */}
         <div className='flex flex-col gap-1'>

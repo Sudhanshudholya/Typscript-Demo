@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
-import logo from '../Images/ack logo.png'
+import logo from '../Screens/Images copy/ack logo.png'
 
 
 
@@ -23,10 +23,10 @@ const Sidebar = () => {
         setIsPreSalesOpen(!isPreSalesOpen)
     }
 
-    const handleLogout = () => {
-        localStorage.clear()
-        navigate('/')
-    }
+    // const handleLogout = () => {
+    //     localStorage.clear()
+    //     navigate('/')
+    // }
 
     return (
         <div className="relative h-screen">
@@ -58,7 +58,7 @@ const Sidebar = () => {
 
                 <div className="space-y-1">
                     <Link to="customer-list">
-                        <div className="p-4 hover:bg-blue-700">
+                        <div className="p-4 hover:bg-blue-700 ">
                             Customers
                         </div>
                     </Link>
@@ -128,10 +128,10 @@ const Sidebar = () => {
                 </div>
             </Link> */}
 
-
+{/* 
                     <button onClick={handleLogout} className="w-full py-4 bg-gradient-to-r from-blue-700 to-blue text-white font-semibold rounded-lg shadow-md hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800 transition-all duration-300 ease-in-out">
                         Log out
-                    </button>
+                    </button> */}
                 </div>
             </div>
         </div>

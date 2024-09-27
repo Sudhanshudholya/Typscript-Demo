@@ -7,6 +7,10 @@ import Layout from '../Sidebar/Layout';
 import ProductListingWrapper from '../Screens/Product/List/ProductListingWrapper';
 import AddProductWrapper from '../Screens/Product/Add Product/AddProductWrapper';
 import EditProductWrapper from '../Screens/Product/Edit Poduct/EditProductWrapper';
+// import CategoryListingWrapper from '../Screens/Category/List/CategoryListingWrapper';
+import AddCategoryFormWrapper from '../Screens/Category/Add Category/AddCategoryWrapper';
+import EditCategoryWrapper from '../Screens/Category/Edit category/EditCategoryWrapper';
+import CategoryListingWrapper from '../Screens/Category/List/CategoryListingWrapper';
 
 const PageRoutes = () => {
   const router = createBrowserRouter([
@@ -47,6 +51,23 @@ const PageRoutes = () => {
               element: <EditProductWrapper /> // Edit customer form 
             }
           ] // Listing of customer
+        },
+
+
+        {
+          path: "category-list", // Category listing page under layout
+          element: <CategoryListingWrapper/>,
+          children: [
+            {
+              path: "add-category",   // Path for adding a category
+              element: <AddCategoryFormWrapper /> // Add category form
+            },
+
+            {
+              path: "edit-product/:id", // Path for editing a category by ID
+              element: <EditCategoryWrapper /> // Edit category form 
+            }
+          ] // Listing of category
         }
 
 

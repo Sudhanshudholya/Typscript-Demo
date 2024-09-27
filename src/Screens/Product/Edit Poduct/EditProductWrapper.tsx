@@ -1,14 +1,15 @@
-import { Form, Formik } from "formik";
 import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { object, string } from "yup";
 import { useEditProductMutation } from "../../../Slice/ProductSlice";
-import toasts from "../../../Toasts/Toasts";
+import { object, string } from "yup";
+// import toasts from "../../../Toasts/Toasts";
+import { Form, Formik } from "formik";
 import ProductFormLayout from "../Layout/ProductFormLayout";
+import toasts from "../../../Toasts/Toasts";
 
 export type ProductFormValues = {
-    photo: string | null;
-    productName: string | null;
-    type: string | null;
+    // photo: string | null;
+    product_Name: string | null;
+    category: string | null;
     quantity: string | null;
     mrp: string | null;
     rate: string | null
@@ -24,29 +25,28 @@ const EditProductWrapper = () => {
 
     const productValidation = object({
 
-        photo: string().required("Photo is required"),
-        productName: string().required("Name is required"),
-        type: string().required("Type is required"),
+        // photo: string().required("Photo is required"),
+        product_Name: string().required("Name is required"),
+        category: string().required("Category is required"),
         quantity: string().required("Quantity is required"),
         mrp: string().required("MRP is required"),
         rate: string().required("Rate is required")
     })
 
     const handleSubmit = (values: ProductFormValues) => {
-      editProduct({userData: values, id, token})
+      editProduct({productData: values, id, token})
       .then((res:any) => {
         console.log(res);
         toasts.successMsg("Product edited successfully")
         navigate("/layout/product-list")
-        
       })
     }
   return (
-    <Formik 
+    <Formik
      initialValues={{
-        photo: query.get('photo'),
-        productName: query.get('productName'),
-        type: query.get('type'),
+        // photo: query.get('photo'),
+        product_Name: query.get('product_Name'),
+        category: query.get('category'),
         quantity: query.get('quantity'),
         mrp: query.get('mrp'),
         rate: query.get('rate')

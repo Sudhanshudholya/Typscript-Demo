@@ -39,6 +39,7 @@ const AddCustomerFormWrapper = () => {
             if(res.data.msg){
                 toasts.successMsg("Customer added successfully")
                 navigate("/layout/customer-list")
+                // setSubmitting(false)
             }else{
                 toasts.errorMsg(res.data.msg)
             }
@@ -49,7 +50,7 @@ const AddCustomerFormWrapper = () => {
     };
 
     return (
-        <Formik initialValues={initialvalues} onSubmit={handleSubmit} validationSchema={customerValidation} >
+        <Formik initialValues={initialvalues} validationSchema={customerValidation} onSubmit={handleSubmit}  >
             {({handleSubmit,...formikProps}:any) => 
                 <Form onSubmit={handleSubmit}>
                     < CustomerFormLayout heading={"Add Customer"} buttonName="Add" formikProps={formikProps} />

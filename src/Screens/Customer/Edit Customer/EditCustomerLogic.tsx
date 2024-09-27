@@ -36,6 +36,8 @@ const EditCustomerFormWrapper = () => {
                 console.log(res)
                 toasts.successMsg("User Edited Successfully")
                 navigate("/layout/customer-list")
+            }).catch((err)=> {
+                console.log(err);   
             })
     };
 
@@ -47,7 +49,7 @@ const EditCustomerFormWrapper = () => {
             contactNumber: query.get('mobile'),
             role: query.get('role'),
         }} 
-        onSubmit={handleSubmit} validationSchema={customerValidation}
+     validationSchema={customerValidation} onSubmit={handleSubmit} 
          >
             {({handleSubmit, ...formikProps}:any) =>
                 <Form onSubmit={handleSubmit}>

@@ -1,14 +1,14 @@
-import ProductFormLayout from '../Layout/ProductFormLayout';
-import { object, string } from 'yup';
-import { useNavigate } from 'react-router-dom';
-import { useAddProductMutation } from '../../../Slice/ProductSlice';
-import { Form, Formik } from 'formik';
-import toasts from '../../../Toasts/Toasts';
+import { useNavigate } from "react-router-dom";
+import { useAddProductMutation } from "../../../Slice/ProductSlice";
+import { number, object, string } from "yup";
+import toasts from "../../../Toasts/Toasts";
+import { Form, Formik } from "formik";
+import ProductFormLayout from "../Layout/ProductFormLayout";
 
 export type ProductFormValues = {
-  photo: string;
-  productName: string;
-  type: string;
+  // photo: string;
+  product_Name: string;
+  category: string;
   quantity: string;
   mrp: string;
   rate: string
@@ -21,27 +21,30 @@ const AddProductWrapper = () => {
 
   const initialvalues: ProductFormValues = {
 
-    photo: '',
-    productName: '',
-    type: '',
+    // photo: '',
+    product_Name: '',
+    category: '',
     quantity: '',
     mrp: '',
     rate: ''
   }
 
   const productValidation = object({
-    photo: string().required("Photo is required"),
-    productName: string().required("Name is required"),
-    type: string().required("Type is required"),
+    // photo: string().required("Photo is required"),
+    product_Name: string().required("Name is required"),
+    category: string().required("category is required"),
     quantity: string().required("Quantity is required"),
     mrp: string().required("MRP is required"),
     rate: string().required("Rate is required")
   })
 
   const handleSubmit = (values: ProductFormValues) => {
+    console.log(values)
     const token = localStorage.getItem("Token")
-    addProduct({ userData: values, token }).then((res: any) => {
+    addProduct({ productData: values, token }).then((res: any) => {
+      
       if (res.data.msg) {
+        console.log(res.data.msg)
         toasts.successMsg("Product added successfully")
         navigate('/layout/product-list')
       } else {

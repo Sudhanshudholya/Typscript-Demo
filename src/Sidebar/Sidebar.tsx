@@ -104,17 +104,19 @@ const Sidebar = () => {
                         </div>
                     </Link> */}
 
-                    <Link to="product-list">
+                    <Link to="category-list">
                         <div className="p-4 hover:bg-blue-700">
-                            Product Management
+                            Category
                         </div>
                     </Link>
 
-                    {/* <Link to="token-management">
+                    <Link to="product-list">
                         <div className="p-4 hover:bg-blue-700">
-                            Token Management
+                            Products
                         </div>
-                    </Link> */}
+                    </Link>
+
+
 
                     {/* <Link to="abp-commission">
                         <div className="p-4 hover:bg-blue-700">
@@ -128,7 +130,7 @@ const Sidebar = () => {
                 </div>
             </Link> */}
 
-{/* 
+                    {/* 
                     <button onClick={handleLogout} className="w-full py-4 bg-gradient-to-r from-blue-700 to-blue text-white font-semibold rounded-lg shadow-md hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800 transition-all duration-300 ease-in-out">
                         Log out
                     </button> */}

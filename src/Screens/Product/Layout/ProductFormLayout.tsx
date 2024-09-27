@@ -1,8 +1,8 @@
-import { ErrorMessage, FormikProps } from 'formik';
-import { ProductFormValues } from '../Add Product/AddProductWrapper';
-import ATMTextField from '../../../Components/Atoms/ATMTextfield/ATMTextfield';
+import { ErrorMessage, FormikProps } from "formik";
+import { ProductFormValues } from "../Add Product/AddProductWrapper";
+import ATMTextField from "../../../Components/Atoms/ATMTextfield/ATMTextfield";
 
-type Props = {
+export type Props = {
     formikProps: FormikProps<ProductFormValues>;
     heading: string;
     buttonName: string;
@@ -19,7 +19,7 @@ const ProductFormLayout = ({ formikProps, heading, buttonName }: Props) => {
                 {/* Form wrapping the fields */}
 
                 {/* Photo */}
-                <div className="mb-4">
+                {/* <div className="mb-4">
                     <ATMTextField
                         label="Photo"
                         placeholder="Product Photo"
@@ -30,47 +30,48 @@ const ProductFormLayout = ({ formikProps, heading, buttonName }: Props) => {
                     />
                     <p className='text-red-400'><ErrorMessage name='photo' /></p>
 
-                </div>
+                </div> */}
 
                 {/* Product Name */}
                 <div className="mb-4">
                     <ATMTextField
                         label="Product Name"
                         placeholder="Enter product name"
-                        name="productName"
-                        value={values.productName}
+                        name="product_Name"
+                        value={values.product_Name}
                         onChange={handleChange}
                         className="w-full"
                     />
-                    <p className='text-red-400'><ErrorMessage name='productName' /></p>
+                    <p className='text-red-400'><ErrorMessage name='product_Name' /></p>
                 </div>
 
-                {/* Type */}
+                {/* category */}
                 <div className="mb-4">
                     <ATMTextField
-                        label="Type"
-                        placeholder="Enter product type"
-                        name="type"
-                        value={values.type}
+                        label="Category"
+                        placeholder="Enter product category"
+                        name="category"
+                        value={values.category}
                         onChange={handleChange}
                         className="w-full"
                     />
-                    <p className='text-red-400'><ErrorMessage name='type' /></p>
+                    <p className='text-red-400'><ErrorMessage name='category' /></p>
                 </div>
 
                 {/* Quantity */}
+
                 <div className="mb-4">
                     <ATMTextField
                         label="Quantity"
-                        placeholder="Enter product quantity"
-                        name="quantity"
-                        value={values.quantity}
+                        placeholder="Enter product category"
+                        name="category"
+                        value={values.category}
                         onChange={handleChange}
                         className="w-full"
                     />
-                    <p className='text-red-400'><ErrorMessage name='quantity' /></p>
+                    <p className='text-red-400'><ErrorMessage name='category' /></p>
                 </div>
-
+              
                 {/* MRP */}
                 <div className="mb-4">
                     <ATMTextField

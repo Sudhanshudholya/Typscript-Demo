@@ -1,18 +1,17 @@
 import apiSlice from "./apiSlice";
 
-
 export const ProductSlice = apiSlice.injectEndpoints({
 
   endpoints: (builder) => ({
 
     addProduct: builder.mutation({
-      query: ({ userData, token }) => ({
+      query: ({ productData, token }) => ({
         url: 'product/addProduct',
         method: 'POST',
-        body: userData,
+        body: productData,
         headers: { "x-access-token": token },
       }),
-      invalidatesTags: ['customer']
+      invalidatesTags: ['product']
     }),
 
     getProduct: builder.query({
@@ -21,17 +20,17 @@ export const ProductSlice = apiSlice.injectEndpoints({
         method: 'GET',
         headers: { "x-access-token": token },
       }),
-      providesTags: ['customer']
+      providesTags: ['product']
     }),
 
     editProduct: builder.mutation({
-      query: ({ userData, id, token }) => ({
+      query: ({ productData, id, token }) => ({
         url: `product/updateProduct/${id}`,
         method: 'PUT',
-        body: userData,
+        body: productData,
         headers: { "x-access-token": token },
       }),
-      invalidatesTags: ['customer']
+      invalidatesTags: ['product']
     }),
 
     deleteProduct: builder.mutation({
@@ -40,7 +39,7 @@ export const ProductSlice = apiSlice.injectEndpoints({
         method: 'DELETE',
         headers: { "x-access-token": token },
       }),
-      invalidatesTags: ['customer']
+      invalidatesTags: ['product']
 
     }),
 
@@ -48,3 +47,4 @@ export const ProductSlice = apiSlice.injectEndpoints({
 });
 
 export const {useAddProductMutation, useGetProductQuery, useEditProductMutation, useDeleteProductMutation} = ProductSlice
+

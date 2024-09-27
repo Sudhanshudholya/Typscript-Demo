@@ -2,7 +2,6 @@ import Swal from 'sweetalert2';
 import { useDeleteProductMutation, useGetProductQuery } from '../../../Slice/ProductSlice';
 import ProductListing from './ProductListing';
 
-ProductListing
 
 const ProductListingWrapper = () => {
 
@@ -11,22 +10,22 @@ const ProductListingWrapper = () => {
   const {data} = useGetProductQuery({token})
   
 
-  const handleDelete = async (productId: string) => {
+  const handleDelete =  (productId: string) => {
     Swal.fire({
       title: 'Are you sure?',
-      text: "Do you really want to delete this customer?",
+      text: "Do you really want to delete this product?",
       icon: 'question',
       showCancelButton: true,
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
-    }).then(async (result) => {
+    }).then( (result) => {
       if (result.isConfirmed) {
         try {
-          await deleteProductById({ id: productId, token });
-          Swal.fire('Deleted!', 'The customer has been deleted.', 'success');
+          deleteProductById({ id: productId, token });
+          Swal.fire('Deleted!', 'The product has been deleted.', 'success');
         } catch (error) {
-          Swal.fire('Error!', 'There was a problem deleting the customer.', 'error');
+          Swal.fire('Error!', 'There was a problem deleting the product.', 'error');
         }
       }
     });

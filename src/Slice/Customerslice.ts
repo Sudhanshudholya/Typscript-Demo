@@ -48,3 +48,4 @@ export const Customerslice = apiSlice.injectEndpoints({
 });
 
 export const { useAddCustomerMutation, useGetCustomerQuery, useDeleteCustomerMutation, useEditCustomerMutation } = Customerslice
+

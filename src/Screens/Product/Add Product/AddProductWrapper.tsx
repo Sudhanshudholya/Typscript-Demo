@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAddProductMutation } from "../../../Slice/ProductSlice";
-import { number, object, string } from "yup";
+import { object, string, number } from "yup";
 import toasts from "../../../Toasts/Toasts";
 import { Form, Formik } from "formik";
 import ProductFormLayout from "../Layout/ProductFormLayout";
@@ -9,9 +9,9 @@ export type ProductFormValues = {
   // photo: string;
   product_Name: string;
   category: string;
-  quantity: string;
-  mrp: string;
-  rate: string
+  quantity: string | number;
+  mrp: string | number;
+  rate: string | number;
 }
 const AddProductWrapper = () => {
 
@@ -33,22 +33,20 @@ const AddProductWrapper = () => {
     // photo: string().required("Photo is required"),
     product_Name: string().required("Name is required"),
     category: string().required("category is required"),
-    quantity: string().required("Quantity is required"),
-    mrp: string().required("MRP is required"),
-    rate: string().required("Rate is required")
+    quantity: number().required("Quantity is required"),
+    mrp: number().required("MRP is required"),
+    rate: number().required("Rate is required")
   })
 
   const handleSubmit = (values: ProductFormValues) => {
-    console.log(values)
+
     const token = localStorage.getItem("Token")
     addProduct({ productData: values, token }).then((res: any) => {
-      
-      if (res.data.msg) {
-        console.log(res.data.msg)
+      if (res.data.status === "OK") {
         toasts.successMsg("Product added successfully")
         navigate('/layout/product-list')
       } else {
-        toasts.errorMsg(res.data.msg)
+        toasts.errorMsg(res.data.msg || "Failed to add product");
       }
     }).catch((err) => {
       toasts.errorMsg("error")
@@ -67,3 +65,6 @@ const AddProductWrapper = () => {
 }
 
 export default AddProductWrapper
+
+
+

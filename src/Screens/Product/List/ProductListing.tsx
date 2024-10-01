@@ -47,7 +47,7 @@ const ProductListing = ({ data, onDelete }: any) => {
                                             <td className="py-2 px-4 border-b">{product.rate}</td>
                                             <td className="py-2 px-4 border-b">
                                                 <Link
-                                                    to={`edit-product/${product._id}?photo=${product.photo}&product_Name=${product.product_Name}&category=${product.category}&quantity=${product.quantity}&mrp=${product.mrp}&rate=${product.rate}`}
+                                                    to={`edit-product/${product._id}`}
                                                 >
                                                     <button className="mr-2 bg-blue-500 text-white px-4 py-1 rounded">
                                                         <FontAwesomeIcon icon={faEdit} />

@@ -1,6 +1,7 @@
 import { ErrorMessage, FormikProps } from 'formik';
 import { CustomerFormValues } from '../Add Customer/AddCustomerWrapper';
 import ATMTextField from '../../../Components/Atoms/ATMTextfield/ATMTextfield';
+import ATMNumberfield from '../../../Components/Atoms/ATMTextfield/ATMNumberfield';
 
 type Props = {
     formikProps: FormikProps<CustomerFormValues>;
@@ -47,7 +48,7 @@ const CustomerFormLayout = ({ formikProps, heading, buttonName }: Props) => {
 
                 {/* Mobile */}
                 <div className="mb-4">
-                    <ATMTextField
+                    <ATMNumberfield
                         label="Contact Number"
                         placeholder="Enter your Contact Number"
                         name="contactNumber"

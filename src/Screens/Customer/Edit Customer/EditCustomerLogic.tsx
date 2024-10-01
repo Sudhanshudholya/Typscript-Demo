@@ -1,24 +1,33 @@
 import CustomerFormLayout from '../Layout/CustomerFormLayout';
 import { object, string } from 'yup';
 import { Form, Formik } from 'formik';
-import { useNavigate, useParams, useSearchParams } from 'react-router-dom';
-import { useEditCustomerMutation } from '../../../Slice/Customerslice';
+import { useNavigate, useParams} from 'react-router-dom';
+import { useEditCustomerMutation, useGetSingleCustomerQuery } from '../../../Slice/Customerslice';
 import toasts from '../../../Toasts/Toasts';
 
 export type CustomerFormValues = {
     name: string | null;
     email: string | null;
-    contactNumber: string | null;
+    contactNumber: number | string;
     role: string | null
 };
 
 const EditCustomerFormWrapper = () => {
 
+    const navigate = useNavigate()
     const token = localStorage.getItem("Token")
     const [editcustomer] = useEditCustomerMutation()
     const { id } = useParams()
-    const [query] = useSearchParams()
-    const navigate = useNavigate()
+    const { data } = useGetSingleCustomerQuery({ token, id })
+
+    //Initial values for the form 
+
+    const initialValues = {
+        name: data?.data?.name,
+        email: data?.data?.email,
+        contactNumber: data?.data?.contactNumber,
+        role: data?.data?.role
+    }
 
 
     const customerValidation = object({
@@ -36,22 +45,19 @@ const EditCustomerFormWrapper = () => {
                 console.log(res)
                 toasts.successMsg("User Edited Successfully")
                 navigate("/layout/customer-list")
-            }).catch((err)=> {
-                console.log(err);   
+            }).catch((err) => {
+                console.log(err);
             })
     };
 
     return (
-        <Formik 
-        initialValues={{
-            name: query.get('name'),
-            email: query.get('email'),
-            contactNumber: query.get('mobile'),
-            role: query.get('role'),
-        }} 
-     validationSchema={customerValidation} onSubmit={handleSubmit} 
-         >
-            {({handleSubmit, ...formikProps}:any) =>
+        <Formik
+        enableReinitialize
+        initialValues={initialValues}
+        validationSchema={customerValidation}
+        onSubmit={handleSubmit}
+        >
+            {({ handleSubmit, ...formikProps }: any) =>
                 <Form onSubmit={handleSubmit}>
                     < CustomerFormLayout heading={"Edit Customer"} buttonName="Edit" formikProps={formikProps} />
                 </Form>

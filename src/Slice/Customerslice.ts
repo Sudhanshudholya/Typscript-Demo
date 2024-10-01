@@ -23,6 +23,15 @@ export const Customerslice = apiSlice.injectEndpoints({
       providesTags: ['customer']
     }),
 
+    getSingleCustomer: builder.query({
+      query: ({token, id}: any) => ({
+      url: `users/getUserById/${id}`,
+      method: 'GET',
+      headers: {"x-access-token" : token},
+      }),
+      providesTags: ['customer']
+    }),
+
     editCustomer: builder.mutation({
       query: ({ userData, id, token }) => ({
         url: `/users/updateUserDetails/${id}`,
@@ -47,5 +56,5 @@ export const Customerslice = apiSlice.injectEndpoints({
   }),
 });
 
-export const { useAddCustomerMutation, useGetCustomerQuery, useDeleteCustomerMutation, useEditCustomerMutation } = Customerslice
+export const { useAddCustomerMutation, useGetCustomerQuery, useGetSingleCustomerQuery, useDeleteCustomerMutation, useEditCustomerMutation } = Customerslice
 

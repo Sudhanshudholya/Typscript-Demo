@@ -1,27 +1,38 @@
-import { useNavigate, useParams, useSearchParams } from "react-router-dom";
-import { useEditProductMutation } from "../../../Slice/ProductSlice";
+import { useNavigate, useParams } from "react-router-dom";
+import { useEditProductMutation, useGetSingleProductQuery } from "../../../Slice/ProductSlice";
 import { object, string } from "yup";
-// import toasts from "../../../Toasts/Toasts";
+import toasts from "../../../Toasts/Toasts";
 import { Form, Formik } from "formik";
 import ProductFormLayout from "../Layout/ProductFormLayout";
-import toasts from "../../../Toasts/Toasts";
+// import toasts from "../../../Toasts/Toasts";
 
 export type ProductFormValues = {
     // photo: string | null;
     product_Name: string | null;
     category: string | null;
-    quantity: string | null;
-    mrp: string | null;
-    rate: string | null
+    quantity:  number | string;
+    mrp: number | string;
+    rate: number | string;
 }
 
 const EditProductWrapper = () => {
     
+    const navigate = useNavigate()
     const token = localStorage.getItem("Token")
     const [editProduct] = useEditProductMutation()
     const {id} = useParams()
-    const [query] = useSearchParams()
-    const navigate = useNavigate()
+    const {data} = useGetSingleProductQuery({token, id})
+   
+    //Initial values for the form
+    
+    const initialValues = {
+      photo: data?.data?.photo,
+      product_Name: data?.data?.product_Name,
+      category: data?.data?.category,
+      quantity: data?.data?.quantity,
+      mrp: data?.data?.mrp,
+      rate: data?.data?.rate,
+    }
 
     const productValidation = object({
 
@@ -36,22 +47,20 @@ const EditProductWrapper = () => {
     const handleSubmit = (values: ProductFormValues) => {
       editProduct({productData: values, id, token})
       .then((res:any) => {
-        console.log(res);
-        toasts.successMsg("Product edited successfully")
+        if(res.data.msg){
+          toasts.successMsg("Product edited successfully")
+        }
         navigate("/layout/product-list")
+      }).catch((err)=>{
+        toasts.errorMsg(err)
       })
     }
   return (
     <Formik
-     initialValues={{
-        // photo: query.get('photo'),
-        product_Name: query.get('product_Name'),
-        category: query.get('category'),
-        quantity: query.get('quantity'),
-        mrp: query.get('mrp'),
-        rate: query.get('rate')
-     }}
-     onSubmit={handleSubmit} validationSchema={productValidation}
+     enableReinitialize
+     initialValues={initialValues}
+     validationSchema={productValidation}
+     onSubmit={handleSubmit} 
     >
          {({handleSubmit, ...formikProps}:any) =>
 

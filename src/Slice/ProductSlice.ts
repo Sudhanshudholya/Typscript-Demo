@@ -5,7 +5,7 @@ export const ProductSlice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
 
     addProduct: builder.mutation({
-      query: ({ productData, token }) => ({
+      query: ({ productData, token } : any) => ({
         url: 'product/addProduct',
         method: 'POST',
         body: productData,
@@ -15,16 +15,25 @@ export const ProductSlice = apiSlice.injectEndpoints({
     }),
 
     getProduct: builder.query({
-      query: ({ token }) => ({
-        url: 'product/getproduct?',
+      query: ({ token }: any) => ({
+        url: 'product/getproduct',
         method: 'GET',
         headers: { "x-access-token": token },
       }),
       providesTags: ['product']
     }),
 
+    getSingleProduct: builder.query({
+      query: ({token, id}: any) => ({
+      url: `product/getSingleProduct/${id}`,
+      method: 'GET',
+      headers: {"x-access-token" : token},
+      }),
+      providesTags: ['product']
+    }),
+
     editProduct: builder.mutation({
-      query: ({ productData, id, token }) => ({
+      query: ({ productData, id, token }: any) => ({
         url: `product/updateProduct/${id}`,
         method: 'PUT',
         body: productData,
@@ -34,17 +43,16 @@ export const ProductSlice = apiSlice.injectEndpoints({
     }),
 
     deleteProduct: builder.mutation({
-      query: ({ id, token }) => ({
+      query: ({ id, token }: any) => ({
         url: `product/deleteProduct/${id}`,
         method: 'DELETE',
         headers: { "x-access-token": token },
       }),
       invalidatesTags: ['product']
-
     }),
 
   }),
 });
 
-export const {useAddProductMutation, useGetProductQuery, useEditProductMutation, useDeleteProductMutation} = ProductSlice
+export const {useAddProductMutation, useGetProductQuery, useGetSingleProductQuery, useEditProductMutation, useDeleteProductMutation} = ProductSlice
 

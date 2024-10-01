@@ -1,6 +1,7 @@
 import { ErrorMessage, FormikProps } from "formik";
 import { ProductFormValues } from "../Add Product/AddProductWrapper";
 import ATMTextField from "../../../Components/Atoms/ATMTextfield/ATMTextfield";
+import ATMNumberfield from "../../../Components/Atoms/ATMTextfield/ATMNumberfield";
 
 export type Props = {
     formikProps: FormikProps<ProductFormValues>;
@@ -45,7 +46,7 @@ const ProductFormLayout = ({ formikProps, heading, buttonName }: Props) => {
                     <p className='text-red-400'><ErrorMessage name='product_Name' /></p>
                 </div>
 
-                {/* category */}
+                {/* Category */}
                 <div className="mb-4">
                     <ATMTextField
                         label="Category"
@@ -61,20 +62,20 @@ const ProductFormLayout = ({ formikProps, heading, buttonName }: Props) => {
                 {/* Quantity */}
 
                 <div className="mb-4">
-                    <ATMTextField
+                    <ATMNumberfield
                         label="Quantity"
-                        placeholder="Enter product category"
-                        name="category"
-                        value={values.category}
+                        placeholder="Enter product quantity"
+                        name="quantity"
+                        value={values.quantity}
                         onChange={handleChange}
                         className="w-full"
                     />
-                    <p className='text-red-400'><ErrorMessage name='category' /></p>
+                    <p className='text-red-400'><ErrorMessage name='quantity' /></p>
                 </div>
               
                 {/* MRP */}
                 <div className="mb-4">
-                    <ATMTextField
+                    <ATMNumberfield
                         label="MRP"
                         placeholder="Enter product mrp"
                         name="mrp"
@@ -89,7 +90,7 @@ const ProductFormLayout = ({ formikProps, heading, buttonName }: Props) => {
                 {/* RATE */}
 
                 <div className="mb-4">
-                    <ATMTextField
+                    <ATMNumberfield
                         label="Rate"
                         placeholder="Enter product rate"
                         name="rate"

@@ -42,7 +42,7 @@ const CustomerListing = ({ data, onDelete }: any) => {
                                     <td className="py-2 px-4 border-b">{customer.role}</td>
                                     <td className="py-2 px-4 border-b">
                                         <Link
-                                            to={`edit-customer/${customer._id}?name=${customer.name}&email=${customer.email}&mobile=${customer.contactNumber}&role=${customer.role}`}
+                                            to={`edit-customer/${customer._id}`}
                                         >
                                             <button className="mr-2 bg-blue-500 text-white px-4 py-1 rounded">
                                                 <FontAwesomeIcon icon={faEdit} />

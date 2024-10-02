@@ -1,7 +1,7 @@
 import { ErrorMessage, FormikProps } from 'formik';
 import { CustomerFormValues } from '../Add Customer/AddCustomerWrapper';
-import ATMTextField from '../../../Components/Atoms/ATMTextfield/ATMTextfield';
-import ATMNumberfield from '../../../Components/Atoms/ATMTextfield/ATMNumberfield';
+import ATMTextField from '../../../Components/Atoms/ATM/ATMTextfield';
+import ATMNumberfield from '../../../Components/Atoms/ATM/ATMNumberfield';
 
 type Props = {
     formikProps: FormikProps<CustomerFormValues>;

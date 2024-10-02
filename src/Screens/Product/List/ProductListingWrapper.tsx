@@ -5,9 +5,11 @@ import ProductListing from './ProductListing';
 
 const ProductListingWrapper = () => {
 
-  const [deleteProductById] = useDeleteProductMutation()
   const token = localStorage.getItem("Token")
   const {data} = useGetProductQuery({token})
+  const [deleteProductById] = useDeleteProductMutation()
+ 
+  
   
 
   const handleDelete =  (productId: string) => {

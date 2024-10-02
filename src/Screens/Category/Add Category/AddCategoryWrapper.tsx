@@ -6,36 +6,56 @@ import { useNavigate } from "react-router-dom";
 import toasts from "../../../Toasts/Toasts";
 
 export type CategoryFormValue = {
-  categoryName: string;
+  categoryname: string;
 };
 
 const AddCategoryFormWrapper = () => {
   const [addCategory] = useAddCategoryMutation();
   const navigate = useNavigate();
 
+  const token = localStorage.getItem("Token");
+  console.log("Tokensss: ", token);
+  
+
   const initialvalues: CategoryFormValue = {
-    categoryName: "",
+    categoryname: "",
   };
 
   const categoryValidation = object({
-    categoryName: string().required("Category is required"),
+    categoryname: string().required("Category is required"),
   });
 
   const handleSubmit = (values: CategoryFormValue) => {
     const token = localStorage.getItem("Token");
+    // addCategory({ categoryData: values, token })
+    //   .then((res: any) => {
+    //     if (res.data.status == "OK") {
+    //       toasts.successMsg("Category added successfully");
+    //       navigate("/layout/category-list");
+    //     } else {
+    //       toasts.errorMsg(res.data.msg || "Failed to add category");
+    //     }
+    //   })
+    //   .catch((err) => {
+    //     toasts.errorMsg("error");
+    //     console.log(err);
+    //   });
+
     addCategory({ categoryData: values, token })
-      .then((res: any) => {
-        if (res.data.status == "OK") {
-          toasts.successMsg("Category added successfully");
-          navigate("/layout/category-list");
-        } else {
-          toasts.errorMsg(res.data.msg || "Failed to add category");
-        }
-      })
-      .catch((err) => {
-        toasts.errorMsg("error");
-        console.log(err);
-      });
+  .then((res: any) => {
+    console.log("Response:", res);
+    if (res.data?.status === "OK") {
+      toasts.successMsg("Category added successfully");
+      navigate("/layout/category-list");
+    } else {
+      toasts.errorMsg(res.data.msg || "Failed to add category");
+    }
+  })
+  .catch((err) => {
+    toasts.errorMsg("error");
+    console.log("Error:", err);
+  });
+
   };
 
   return (

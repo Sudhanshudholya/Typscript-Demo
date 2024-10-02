@@ -1,7 +1,12 @@
 import Swal from "sweetalert2";
 import CategoryListing from "./CategoryListing";
+import { useGetCategoryQuery } from "../../../Slice/CategorySlice";
 
-const CategoryListingWrapper = ({data}:any) => {
+const CategoryListingWrapper = () => {
+  
+   const token = localStorage.getItem("Token")
+   const {data} = useGetCategoryQuery({token})
+
 
   const handleDelete = (categoryId: string) => {
     Swal.fire({

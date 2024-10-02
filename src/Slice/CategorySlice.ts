@@ -28,7 +28,7 @@ export const CategorySlice = apiSlice.injectEndpoints({
             method: 'GET',
             headers: {"x-access-token" : token},
             }),
-            providesTags: ['product']
+            providesTags: ['category']
           }),
 
           editCategory: builder.mutation({
@@ -38,10 +38,12 @@ export const CategorySlice = apiSlice.injectEndpoints({
               body: categoryData,
               headers: { "x-access-token": token },
             }),
-            invalidatesTags: ['product']
+            invalidatesTags: ['category']
           }),
       
     }),
 });
 
 export const {useAddCategoryMutation, useGetCategoryQuery, useGetSingleCategoryQuery, useEditCategoryMutation} = CategorySlice
+
+

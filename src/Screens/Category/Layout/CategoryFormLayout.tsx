@@ -1,7 +1,14 @@
 import { ErrorMessage, FormikProps } from 'formik';
 import { CategoryFormValue } from '../Add Category/AddCategoryWrapper';
-import ATMTextField from '../../../Components/Atoms/ATMTextfield/ATMTextfield';
+import ATMTextField from '../../../Components/Atoms/ATM/ATMTextfield';
 
+type FormikProps = {
+    values: {
+        categoryName: string;
+    };
+    handleChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
+    isSubmitting: boolean;
+}
 type Props = {
     formikProps: FormikProps<CategoryFormValue>;
     heading: string;
@@ -10,6 +17,8 @@ type Props = {
 
 const CategoryFormLayout = ({ formikProps, heading, buttonName }: Props) => {
     const { values, handleChange, isSubmitting } = formikProps; // Destructure handleSubmit from formikProps
+    // console.log("valuesss" , values);
+
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-50">
@@ -22,13 +31,13 @@ const CategoryFormLayout = ({ formikProps, heading, buttonName }: Props) => {
                 <div className="mb-4">
                     <ATMTextField
                         label="Category Name"
+                        name="categoryname"
                         placeholder="Enter your category"
-                        name="categoryName"
-                        value={values.categoryName}
+                        value={values.categoryname}
                         onChange={handleChange}
                         className="w-full"
                     />
-                    <p className='text-red-400'><ErrorMessage name='categoryName' /></p>
+                    <p className='text-red-400'><ErrorMessage name='categoryname' /></p>
 
                 </div>
 

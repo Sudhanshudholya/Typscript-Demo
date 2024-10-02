@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { useAddProductMutation } from "../../../Slice/ProductSlice";
-import { object, string, number } from "yup";
+import { number, object, string } from "yup";
 import toasts from "../../../Toasts/Toasts";
 import { Form, Formik } from "formik";
 import ProductFormLayout from "../Layout/ProductFormLayout";
@@ -65,6 +65,3 @@ const AddProductWrapper = () => {
 }
 
 export default AddProductWrapper
-
-
-

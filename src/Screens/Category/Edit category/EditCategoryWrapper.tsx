@@ -6,7 +6,7 @@ import { useEditCategoryMutation, useGetSingleCategoryQuery } from "../../../Sli
 import toasts from "../../../Toasts/Toasts";
 
 export type CategoryFormValue = {
-    categoryName: string | null;
+    categoryname: string | null;
 };
 
 const EditCategoryWrapper = () => {
@@ -18,10 +18,10 @@ const EditCategoryWrapper = () => {
     const {data} = useGetSingleCategoryQuery({token, id})
 
     const initialValues = {
-        categoryName: data?.data?.categoryName
+        categoryname: data?.data?.categoryname 
     }
     const categoryValidation = object({
-        categoryName: string().required('Name is required'),
+        categoryname: string().required('Name is required'),
     });
 
     const handleSubmit = (values: CategoryFormValue) => {

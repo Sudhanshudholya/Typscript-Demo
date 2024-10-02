@@ -1,11 +1,10 @@
-import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { Link, Outlet, useLocation } from 'react-router-dom'
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
+import { Link, Outlet, useLocation } from 'react-router-dom';
+
 
 const ProductListing = ({ data, onDelete }: any) => {
-    console.log(data);
-    
-  
+      
     const location = useLocation();
 
     return (
@@ -83,3 +82,4 @@ const ProductListing = ({ data, onDelete }: any) => {
 }
 
 export default ProductListing;
+

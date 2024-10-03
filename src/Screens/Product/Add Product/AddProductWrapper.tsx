@@ -5,6 +5,7 @@ import toasts from "../../../Toasts/Toasts";
 import { Form, Formik } from "formik";
 import ProductFormLayout from "../Layout/ProductFormLayout";
 
+
 export type ProductFormValues = {
   // photo: string;
   product_Name: string;
@@ -19,7 +20,7 @@ const AddProductWrapper = () => {
 
   const navigate = useNavigate()
 
-  const initialvalues: ProductFormValues = {
+  const initialvalues : ProductFormValues = {
 
     // photo: '',
     product_Name: '',
@@ -39,9 +40,11 @@ const AddProductWrapper = () => {
   })
 
   const handleSubmit = (values: ProductFormValues) => {
+    console.log(values, "value")
 
     const token = localStorage.getItem("Token")
     addProduct({ productData: values, token }).then((res: any) => {
+      console.log(res, "res")
       if (res.data.status === "OK") {
         toasts.successMsg("Product added successfully")
         navigate('/layout/product-list')

@@ -2,15 +2,6 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faEdit, faTrash } from '@fortawesome/free-solid-svg-icons';
 import { Link, Outlet, useLocation } from 'react-router-dom';
 
-// type Category = {
-//   _id: string;
-//   name: string;
-// };
-
-// type Props = {
-//   categoryData: Category[];
-//   onDelete: (id: string) => void;
-// };
 
 const CategoryListing = ({ data , onDelete }: any) => {
   const location = useLocation();

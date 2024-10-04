@@ -66,3 +66,5 @@ const CategoryListing = ({ data , onDelete }: any) => {
 
 export default CategoryListing;
 
+
+

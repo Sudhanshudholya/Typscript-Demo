@@ -38,7 +38,6 @@ const CategoryFormLayout = ({ formikProps, heading, buttonName }: Props) => {
                         className="w-full"
                     />
                     <p className='text-red-400'><ErrorMessage name='categoryname' /></p>
-
                 </div>
 
                 {/* Submit Button */}

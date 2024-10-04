@@ -48,7 +48,7 @@ const CustomerFormLayout = ({ formikProps, heading, buttonName }: Props) => {
 
                 {/* Mobile */}
                 <div className="mb-4">
-                    <ATMNumberfield
+                    <ATMTextField
                         label="Contact Number"
                         placeholder="Enter your Contact Number"
                         name="contactNumber"

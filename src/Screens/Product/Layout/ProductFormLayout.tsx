@@ -130,7 +130,6 @@ import { ProductFormValues } from "../Add Product/AddProductWrapper";
 import ATMTextField from "../../../Components/Atoms/ATM/ATMTextfield";
 import ATMNumberfield from "../../../Components/Atoms/ATM/ATMNumberfield";
 import { useGetCategoryQuery } from "../../../Slice/CategorySlice";
-// import { useAddProductMutation, useGetProductQuery } from "../../../Slice/ProductSlice";
 
 export type Props = {
     formikProps: FormikProps<ProductFormValues>;
@@ -142,7 +141,7 @@ const ProductFormLayout = ({ formikProps, heading, buttonName }: Props) => {
     const { values, handleChange, isSubmitting } = formikProps; // Destructure handleSubmit from formikProps
     const token = localStorage.getItem("Token")
     const { data } = useGetCategoryQuery({ token })
-    // const [addProduct] = useAddProductMutation()
+ 
 
     return (
         <div className="flex justify-center items-center h-screen bg-gray-50">
@@ -180,28 +179,12 @@ const ProductFormLayout = ({ formikProps, heading, buttonName }: Props) => {
 
                 {/* Category */}
                 <div className="mb-4">
-                    {/* <ATMTextField
-                        label="Category"
-                        placeholder="Enter product category"
-                        name="category"
-                        value={values.category}
-                        onChange={handleChange}
-                        className="w-full"
-                    />
-                    <p className='text-red-400'><ErrorMessage name='category' /></p> */}
-
-
-
-                    {/* <select>
-                       {data?.data?.map((category)=>(
-                        <option value={values.category._id}>{category.categoryname}</option>
-                       ))}
-                    </select> */}
 
                     <div>
                         <label htmlFor="category" className="block text-sm text-gray-700">
                             Category
                         </label>
+
                         <select
                             name="category"
                             value={values.category}

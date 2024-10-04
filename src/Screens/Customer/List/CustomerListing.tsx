@@ -75,3 +75,4 @@ const CustomerListing = ({ data, onDelete }: any) => {
 };
 
 export default CustomerListing;
+

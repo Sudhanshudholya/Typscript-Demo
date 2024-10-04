@@ -82,4 +82,3 @@ const ProductListing = ({ data, onDelete }: any) => {
 }
 
 export default ProductListing;
-

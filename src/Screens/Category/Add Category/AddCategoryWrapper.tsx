@@ -10,12 +10,12 @@ export type CategoryFormValue = {
 };
 
 const AddCategoryFormWrapper = () => {
+
   const [addCategory] = useAddCategoryMutation();
   const navigate = useNavigate();
-
   const token = localStorage.getItem("Token");
   console.log("Tokens: ", token);
-  
+
   const initialvalues: CategoryFormValue = {
     categoryname: "",
   };
@@ -27,19 +27,19 @@ const AddCategoryFormWrapper = () => {
   const handleSubmit = (values: CategoryFormValue) => {
     const token = localStorage.getItem("Token");
     addCategory({ categoryData: values, token })
-  .then((res: any) => {
-    console.log("Response:", res);
-    if (res.data?.status === "OK") {
-      toasts.successMsg("Category added successfully");
-      navigate("/layout/category-list");
-    } else {
-      toasts.errorMsg(res.data.msg || "Failed to add category");
-    }
-  })
-  .catch((err) => {
-    toasts.errorMsg("error");
-    console.log("Error:", err);
-  });
+      .then((res: any) => {
+        console.log("Response:", res);
+        if (res.data?.status === "OK") {
+          toasts.successMsg("Category added successfully");
+          navigate("/layout/category-list");
+        } else {
+          toasts.errorMsg(res.data.msg || "Failed to add category");
+        }
+      })
+      .catch((err) => {
+        toasts.errorMsg("error");
+        console.log("Error:", err);
+      });
 
   };
 

@@ -20,7 +20,7 @@ const AddProductWrapper = () => {
 
   const navigate = useNavigate()
 
-  const initialvalues : ProductFormValues = {
+  const initialvalues: ProductFormValues = {
 
     // photo: '',
     product_Name: '',
@@ -40,21 +40,21 @@ const AddProductWrapper = () => {
   })
 
   const handleSubmit = (values: ProductFormValues) => {
-    console.log(values, "value")
+
 
     const token = localStorage.getItem("Token")
-    addProduct({ productData: values, token }).then((res: any) => {
-      console.log(res, "res")
-      if (res.data.status === "OK") {
-        toasts.successMsg("Product added successfully")
-        navigate('/layout/product-list')
-      } else {
-        toasts.errorMsg(res.data.msg || "Failed to add product");
-      }
-    }).catch((err) => {
-      toasts.errorMsg("error")
-      console.log(err);
-    })
+    addProduct({ productData: values, token })
+      .then((res: any) => {
+        if (res.data.status === "OK") {
+          toasts.successMsg("Product added successfully")
+          navigate('/layout/product-list')
+        } else {
+          toasts.errorMsg(res.data.msg || "Failed to add product");
+        }
+      }).catch((err) => {
+        toasts.errorMsg("error")
+        console.log(err);
+      })
   }
   return (
     <Formik initialValues={initialvalues} validationSchema={productValidation} onSubmit={handleSubmit}>

@@ -22,6 +22,7 @@ const CategoryListing = ({ data , onDelete }: any) => {
           </div>
 
           {/* Table to display category details */}
+          
           <table className="min-w-full bg-white border">
             <thead className="bg-white border">
               <tr className="text-slate-600 text-center">
@@ -40,12 +41,12 @@ const CategoryListing = ({ data , onDelete }: any) => {
                           <FontAwesomeIcon icon={faEdit} />
                         </button>
                       </Link>
-                      <button
+                      {/* <button
                         className="bg-red-500 text-white px-4 py-1 rounded"
                         onClick={() => onDelete(category._id)}
                       >
                         <FontAwesomeIcon icon={faTrash} />
-                      </button>
+                      </button> */}
                     </td>
                   </tr>
                 ))

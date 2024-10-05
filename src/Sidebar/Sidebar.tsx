@@ -23,10 +23,10 @@ const Sidebar = () => {
         setIsPreSalesOpen(!isPreSalesOpen)
     }
 
-    // const handleLogout = () => {
-    //     localStorage.clear()
-    //     navigate('/')
-    // }
+    const handleLogout = () => {
+        localStorage.clear()
+        navigate('/')
+    }
 
     return (
         <div className="relative h-screen">
@@ -132,10 +132,10 @@ const Sidebar = () => {
                 </div>
             </Link> */}
 
-                    {/* 
+                    
                     <button onClick={handleLogout} className="w-full py-4 bg-gradient-to-r from-blue-700 to-blue text-white font-semibold rounded-lg shadow-md hover:bg-gradient-to-r hover:from-blue-600 hover:to-blue-800 transition-all duration-300 ease-in-out">
                         Log out
-                    </button> */}
+                    </button> 
                 </div>
             </div>
         </div>

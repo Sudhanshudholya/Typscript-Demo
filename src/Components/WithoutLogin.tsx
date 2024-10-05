@@ -1,12 +1,12 @@
-import React, { useEffect } from 'react'
+import { useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
 
- const Auth = ({children}) => {
+const WithoutLogin = ({children}:any) => {
     const navigate = useNavigate()
     useEffect(()=>{
         const token = localStorage.getItem("Token")
-        if(!token){
-            navigate("/")
+        if(token){
+            navigate("/layout")
         }
     })
   return (
@@ -16,7 +16,4 @@ import { useNavigate } from 'react-router-dom'
   )
 }
 
-export default Auth
-
-
-
+export default WithoutLogin

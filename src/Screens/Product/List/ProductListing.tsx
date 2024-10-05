@@ -4,7 +4,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 
 
 const ProductListing = ({ data, onDelete }: any) => {
-      
+
     const location = useLocation();
 
     return (
@@ -36,7 +36,7 @@ const ProductListing = ({ data, onDelete }: any) => {
                             <tbody className="min-w-full bg-white border text-slate-900 ">
                                 {data?.data?.length > 0 ? (
                                     data?.data?.map((product: any) => (
-                                       
+
                                         <tr key={product._id} style={{ textAlign: "center" }} className='text-slate-900'>
                                             {/* <td className="py-2 px-4 border-b">{product.photo}</td> */}
                                             <td className="py-2 px-4 border-b">{product.product_Name}</td>

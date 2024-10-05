@@ -5,7 +5,7 @@ export const Customerslice = apiSlice.injectEndpoints({
   endpoints: (builder) => ({
 
     addCustomer: builder.mutation({
-      query: ({ userData, token }: {userData: any, token: string}) => ({
+      query: ({ userData, token }: any) => ({
         url: '/users/addUser',
         method: 'POST',
         body: userData,
@@ -15,7 +15,7 @@ export const Customerslice = apiSlice.injectEndpoints({
     }),
 
     getCustomer: builder.query({
-      query: ({ token }: {token: string}) => ({
+      query: ({ token }: any) => ({
         url: '/users/getAllUsers',
         method: 'GET',
         headers: { "x-access-token": token },
@@ -24,7 +24,7 @@ export const Customerslice = apiSlice.injectEndpoints({
     }),
 
     getSingleCustomer: builder.query({
-      query: ({token, id}: {token: string, id: string}) => ({
+      query: ({token, id}: any) => ({
       url: `users/getUserById/${id}`,
       method: 'GET',
       headers: {"x-access-token" : token},
@@ -33,7 +33,7 @@ export const Customerslice = apiSlice.injectEndpoints({
     }),
 
     editCustomer: builder.mutation({
-      query: ({ userData, id, token }: {userData: any, id: any, token: any}) => ({
+      query: ({ userData, id, token }: any) => ({
         url: `/users/updateUserDetails/${id}`,
         method: 'PUT',
         body: userData,
@@ -44,7 +44,7 @@ export const Customerslice = apiSlice.injectEndpoints({
     }),
 
     deleteCustomer: builder.mutation({
-      query: ({ id, token }) => ({
+      query: ({ id, token }: any) => ({
         url: `/users/deleteUser/${id}`,
         method: 'DELETE',
         headers: { "x-access-token": token },

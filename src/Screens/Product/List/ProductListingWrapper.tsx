@@ -6,13 +6,10 @@ import ProductListing from './ProductListing';
 const ProductListingWrapper = () => {
 
   const token = localStorage.getItem("Token")
-  const {data} = useGetProductQuery({token})
+  const { data } = useGetProductQuery({ token })
   const [deleteProductById] = useDeleteProductMutation()
- 
-  
-  
 
-  const handleDelete =  (productId: string) => {
+  const handleDelete = (productId: string) => {
     Swal.fire({
       title: 'Are you sure?',
       text: "Do you really want to delete this product?",
@@ -21,7 +18,7 @@ const ProductListingWrapper = () => {
       confirmButtonColor: '#3085d6',
       cancelButtonColor: '#d33',
       confirmButtonText: 'Yes, delete it!'
-    }).then( (result) => {
+    }).then((result) => {
       if (result.isConfirmed) {
         try {
           deleteProductById({ id: productId, token });
@@ -32,9 +29,9 @@ const ProductListingWrapper = () => {
       }
     });
   };
- 
+
   return (
-    <ProductListing  data={data} onDelete={handleDelete}/>
+    <ProductListing data={data} onDelete={handleDelete} />
   )
 }
 export default ProductListingWrapper

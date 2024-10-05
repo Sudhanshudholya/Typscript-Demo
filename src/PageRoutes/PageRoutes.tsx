@@ -10,7 +10,7 @@ import EditProductWrapper from '../Screens/Product/Edit Poduct/EditProductWrappe
 import CategoryListingWrapper from '../Screens/Category/List/CategoryListingWrapper';
 import AddCategoryFormWrapper from '../Screens/Category/Add Category/AddCategoryWrapper';
 import EditCategoryWrapper from '../Screens/Category/Edit category/EditCategoryWrapper';
-import Auth from '../Components/Auth'
+import Auth from '../Components/Auth';
 import WithoutLogin from '../Components/WithoutLogin';
 
 const PageRoutes = () => {
@@ -70,8 +70,9 @@ const PageRoutes = () => {
       ],
     },
   ]);
-
-  return <RouterProvider router={router} />; // Provide router to the app
+  return (
+    <RouterProvider router={router} />
+  ) // Provide router to the app
 };
 
 export default PageRoutes;

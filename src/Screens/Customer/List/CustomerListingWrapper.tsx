@@ -4,7 +4,7 @@ import CustomerListing from './CustomerListing'
 
 const CustomerListingWrapper = () => {
 
-  const [deleteCustomerById]=useDeleteCustomerMutation()
+  const [deleteCustomerById] = useDeleteCustomerMutation()
   const token = localStorage.getItem("Token")
   const { data } = useGetCustomerQuery({ token })
 
@@ -28,9 +28,9 @@ const CustomerListingWrapper = () => {
       }
     });
   };
- 
+
   return (
-    <CustomerListing data={data} onDelete={handleDelete}/>
+    <CustomerListing data={data} onDelete={handleDelete} />
   )
 }
 export default CustomerListingWrapper

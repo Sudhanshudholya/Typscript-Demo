@@ -8,50 +8,57 @@ import toasts from '../../Toasts/Toasts'
 
 const LoginWrapper = () => {
 
-    const navigate = useNavigate()
-    const [login] = useLoginMutation()
-   
+  const navigate = useNavigate()
+  const [login] = useLoginMutation()
 
-    const initialValues = {
-        username: "",
-        password: "",
-    }
 
-    const validationSchema = object({
-        username: string().required("Email is required"),
-        password: string().required("Password is required")
-    })
+  const initialValues = {
+    username: "",
+    password: "",
+  }
 
-    const handleSubmit = (values: any, {setSubmitting}: FormikHelpers<any>) => {
-      
-     login(values).then((res) => {
-      if(res.data.status == 'OK'){
+  const validationSchema = object({
+    username: string().required("Email is required"),
+    password: string().required("Password is required")
+  })
+
+  const handleSubmit = (values: any, { setSubmitting }: FormikHelpers<any>) => {
+
+    login(values).then((res) => {
+      if (res.data.status == 'OK') {
         localStorage.setItem("Token", res.data.data.token)
         toasts.successMsg("Login Successfully")
         navigate('/layout/customer-list')
-      }else{
+      } else {
         toasts.errorMsg("Invalid Credential")
       }
-     }).catch((err)=>{
+    }).catch((err) => {
       toasts.errorMsg("Invalid credentials")
       console.log(err);
-     }).finally(()=>{
+    }).finally(() => {
       setSubmitting(false)
-     })
-       
-    }
+    })
+
+  }
+  
   return (
     <Formik initialValues={initialValues} validationSchema={validationSchema} onSubmit={handleSubmit} >
 
-     {
+      {
         (formikProps) => {
-            return(
-                <Form>
-                    <Login formikProps = {formikProps}/>
-                </Form>
-            )
+
+          return (
+
+            <Form>
+              <Login formikProps={formikProps} />
+            </Form>
+            
+          )
+
         }
-     }
+
+      }
+
     </Formik>
   )
 }

@@ -8,7 +8,7 @@ const CustomerListingWrapper = () => {
   const token = localStorage.getItem("Token")
   const { data } = useGetCustomerQuery({ token })
 
-  const handleDelete = async (customerId: string) => {
+  const handleDelete = async (id: string) => {
     Swal.fire({
       title: 'Are you sure?',
       text: "Do you really want to delete this customer?",
@@ -20,7 +20,7 @@ const CustomerListingWrapper = () => {
     }).then(async (result) => {
       if (result.isConfirmed) {
         try {
-          await deleteCustomerById({ id: customerId, token });
+          await deleteCustomerById({ id, token });
           Swal.fire('Deleted!', 'The customer has been deleted.', 'success');
         } catch (error) {
           Swal.fire('Error!', 'There was a problem deleting the customer.', 'error');

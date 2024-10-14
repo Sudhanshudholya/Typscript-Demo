@@ -1,26 +1,32 @@
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 import Layout from '../Sidebar/Layout';
+import Auth from '../Components/Auth';
+import WithoutLogin from '../Components/WithoutLogin';
 import LoginWrapper from '../Screens/Login/LoginWrapper';
 import CustomerListingWrapper from '../Screens/Customer/List/CustomerListingWrapper';
-import AddCustomerFormWrapper from '../Screens/Customer/Add Customer/AddCustomerWrapper';
-import EditCustomerFormWrapper from '../Screens/Customer/Edit Customer/EditCustomerLogic';
+import AddCustomerWrapper from '../Screens/Customer/Add Customer/AddCustomerWrapper';
+import EditCustomerWrapper from '../Screens/Customer/Edit Customer/EditCustomerLogic';
 import ProductListingWrapper from '../Screens/Product/List/ProductListingWrapper';
 import AddProductWrapper from '../Screens/Product/Add Product/AddProductWrapper';
 import EditProductWrapper from '../Screens/Product/Edit Poduct/EditProductWrapper';
 import CategoryListingWrapper from '../Screens/Category/List/CategoryListingWrapper';
-import AddCategoryFormWrapper from '../Screens/Category/Add Category/AddCategoryWrapper';
+import AddCategoryWrapper from '../Screens/Category/Add Category/AddCategoryWrapper';
 import EditCategoryWrapper from '../Screens/Category/Edit category/EditCategoryWrapper';
-import Auth from '../Components/Auth';
-import WithoutLogin from '../Components/WithoutLogin';
+// import InvoiceListingWrapper from '../Screens/Invoice/List/InvoiceListingWrapper';
+import AddInvoiceWrapper from '../Screens/Invoice/Add Invoice/AddInvoiceWrapper';
+import InvoiceListing from '../Screens/Invoice/List/InvoiceListing';
+import EditInvoiceWrapper from '../Screens/Invoice/Edit Invoice/EditInvoiceWrapper';
+// import EditInvoiceWrapper from '../Screens/Invoice/Edit Invoice/EditInvoiceWrapper';
 
 const PageRoutes = () => {
+
   const router = createBrowserRouter([
     {
       path: '/', // Root path
       element: (
         <WithoutLogin>
           <LoginWrapper />
-        // </WithoutLogin>
+         </WithoutLogin>
       ), // Login page
     },
     {
@@ -28,7 +34,7 @@ const PageRoutes = () => {
       element: (
         <Auth>
           <Layout />
-        // </Auth>
+         </Auth>
       ), // Main layout that contains a sidebar
       children: [
         {
@@ -37,11 +43,11 @@ const PageRoutes = () => {
         },
         {
           path: 'customer-list/add-customer', // Path for adding a customer
-          element: <AddCustomerFormWrapper />, // Add customer form
+          element: <AddCustomerWrapper />, // Add customer form
         },
         {
           path: 'customer-list/edit-customer/:id', // Path for editing a customer by ID
-          element: <EditCustomerFormWrapper />, // Edit customer form
+          element: <EditCustomerWrapper />, // Edit customer form
         },
         {
           path: 'product-list', // Product listing page under layout
@@ -61,12 +67,26 @@ const PageRoutes = () => {
         },
         {
           path: 'category-list/add-category', // Path for adding a category
-          element: <AddCategoryFormWrapper />, // Add category form
+          element: <AddCategoryWrapper />, // Add category form
         },
         {
           path: 'category-list/edit-category/:id', // Path for editing a category by ID
           element: <EditCategoryWrapper />, // Edit category form
         },
+        {
+          path: 'invoice-list', //Category listing page under layout
+          element: <InvoiceListing />, 
+        },
+        {
+          path: 'invoice-list/add-invoice', //Category listing page under layout
+          element: <AddInvoiceWrapper />, 
+        },
+        {
+          path: 'invoice-list/edit-invoice/:id', //Category listing page under layout
+          element: <EditInvoiceWrapper />, 
+        },
+        
+       
       ],
     },
   ]);

@@ -14,7 +14,7 @@ export type CustomerFormValues = {
 
 };
 
-const EditCustomerFormWrapper = () => {
+const EditCustomerWrapper = () => {
 
     const navigate = useNavigate()
     const token = localStorage.getItem("Token")
@@ -68,6 +68,6 @@ const EditCustomerFormWrapper = () => {
     )
 }
 
-export default EditCustomerFormWrapper
+export default EditCustomerWrapper
 
 

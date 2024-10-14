@@ -5,11 +5,11 @@ import ProductListing from './ProductListing';
 
 const ProductListingWrapper = () => {
 
+  const [deleteProductById] = useDeleteProductMutation()
   const token = localStorage.getItem("Token")
   const { data } = useGetProductQuery({ token })
-  const [deleteProductById] = useDeleteProductMutation()
 
-  const handleDelete = (productId: string) => {
+  const handleDelete = (id: string) => {
     Swal.fire({
       title: 'Are you sure?',
       text: "Do you really want to delete this product?",
@@ -21,7 +21,7 @@ const ProductListingWrapper = () => {
     }).then((result) => {
       if (result.isConfirmed) {
         try {
-          deleteProductById({ id: productId, token });
+          deleteProductById({ id, token });
           Swal.fire('Deleted!', 'The product has been deleted.', 'success');
         } catch (error) {
           Swal.fire('Error!', 'There was a problem deleting the product.', 'error');

@@ -13,7 +13,7 @@ export type CustomerFormValues = {
     role: string
 }
 
-const AddCustomerFormWrapper = () => {
+const AddCustomerWrapper = () => {
 
     const [addCustomer] = useAddCustomerMutation()
     const navigate = useNavigate()
@@ -60,5 +60,5 @@ const AddCustomerFormWrapper = () => {
     )
 }
 
-export default AddCustomerFormWrapper
+export default AddCustomerWrapper
 

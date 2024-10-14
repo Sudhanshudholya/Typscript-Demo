@@ -9,7 +9,7 @@ export type CategoryFormValue = {
   categoryname: string;
 };
 
-const AddCategoryFormWrapper = () => {
+const AddCategoryWrapper = () => {
 
   const [addCategory] = useAddCategoryMutation();
   const navigate = useNavigate();
@@ -62,4 +62,4 @@ const AddCategoryFormWrapper = () => {
   );
 };
 
-export default AddCategoryFormWrapper;
+export default AddCategoryWrapper;

@@ -11,7 +11,7 @@ type Props = {
 const CustomerFormLayout = ({ formikProps, heading, buttonName }: Props) => {
     
     const { values, handleChange, isSubmitting } = formikProps;
-
+    
     return (
         <div className="flex justify-center items-center min-h-screen bg-gray-50 px-4 sm:px-6 lg:px-8">
             <div className="w-full max-w-md p-6 bg-white border border-gray-200 rounded-lg shadow-md">

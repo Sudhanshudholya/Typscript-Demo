@@ -11,6 +11,7 @@ export type Props = {
 };
 
 const ProductFormLayout = ({ formikProps, heading, buttonName }: Props) => {
+    
     const { values, handleChange, isSubmitting } = formikProps; // Destructure handleSubmit from formikProps
     const token = localStorage.getItem("Token")
     const { data } = useGetCategoryQuery({ token })

@@ -11,10 +11,10 @@ export type CategoryFormValue = {
 
 const AddCategoryWrapper = () => {
 
-  const [addCategory] = useAddCategoryMutation();
   const navigate = useNavigate();
   const token = localStorage.getItem("Token");
-  console.log("Tokens: ", token);
+  const [addCategory] = useAddCategoryMutation();
+
 
   const initialvalues: CategoryFormValue = {
     categoryname: "",
@@ -25,7 +25,6 @@ const AddCategoryWrapper = () => {
   });
 
   const handleSubmit = (values: CategoryFormValue) => {
-    const token = localStorage.getItem("Token");
     addCategory({ categoryData: values, token })
       .then((res: any) => {
         console.log("Response:", res);

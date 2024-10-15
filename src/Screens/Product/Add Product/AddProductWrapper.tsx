@@ -16,8 +16,9 @@ export type ProductFormValues = {
 }
 const AddProductWrapper = () => {
 
-  const [addProduct] = useAddProductMutation()
   const navigate = useNavigate()
+  const token = localStorage.getItem("Token")
+  const [addProduct] = useAddProductMutation()
 
   const initialvalues: ProductFormValues = {
 
@@ -39,8 +40,6 @@ const AddProductWrapper = () => {
   })
 
   const handleSubmit = (values: ProductFormValues) => {
-    
-    const token = localStorage.getItem("Token")
     addProduct({ productData: values, token })
       .then((res: any) => {
         if (res.data.status === "OK") {

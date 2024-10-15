@@ -15,8 +15,9 @@ export type CustomerFormValues = {
 
 const AddCustomerWrapper = () => {
 
-    const [addCustomer] = useAddCustomerMutation()
     const navigate = useNavigate()
+    const token = localStorage.getItem('Token')
+    const [addCustomer] = useAddCustomerMutation()
 
     const initialvalues: CustomerFormValues = {
         name: '',
@@ -33,8 +34,6 @@ const AddCustomerWrapper = () => {
     });
 
     const handleSubmit = (values: CustomerFormValues) => {
-
-        const token = localStorage.getItem('Token')
 
         addCustomer({ userData: values, token }).then((res: any) => {
             if (res.data.msg) {

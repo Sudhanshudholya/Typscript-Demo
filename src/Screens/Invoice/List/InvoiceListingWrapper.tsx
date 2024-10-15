@@ -1,11 +1,11 @@
 import React from 'react'
 import InvoiceFormLayout from '../Layout/InvoiceFormLayout'
-// import InvoiceFormLayout from '../Layout/InvoiceFormLayout'
+
 
 const InvoiceListingWrapper = () => {
   return (
     <div>
-     <InvoiceFormLayout />
+    <InvoiceFormLayout/>
     </div>
   )
 }

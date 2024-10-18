@@ -8,15 +8,14 @@ import AddCustomerWrapper from '../Screens/Customer/Add Customer/AddCustomerWrap
 import EditCustomerWrapper from '../Screens/Customer/Edit Customer/EditCustomerLogic';
 import ProductListingWrapper from '../Screens/Product/List/ProductListingWrapper';
 import AddProductWrapper from '../Screens/Product/Add Product/AddProductWrapper';
-import EditProductWrapper from '../Screens/Product/Edit Poduct/EditProductWrapper';
+import EditProductWrapper from '../Screens/Product/Edit Product/EditProductWrapper';
 import CategoryListingWrapper from '../Screens/Category/List/CategoryListingWrapper';
 import AddCategoryWrapper from '../Screens/Category/Add Category/AddCategoryWrapper';
 import EditCategoryWrapper from '../Screens/Category/Edit category/EditCategoryWrapper';
-// import InvoiceListingWrapper from '../Screens/Invoice/List/InvoiceListingWrapper';
+import InvoiceListingWrapper from '../Screens/Invoice/List/InvoiceListingWrapper';
 import AddInvoiceWrapper from '../Screens/Invoice/Add Invoice/AddInvoiceWrapper';
-import InvoiceListing from '../Screens/Invoice/List/InvoiceListing';
 import EditInvoiceWrapper from '../Screens/Invoice/Edit Invoice/EditInvoiceWrapper';
-// import EditInvoiceWrapper from '../Screens/Invoice/Edit Invoice/EditInvoiceWrapper';
+
 
 const PageRoutes = () => {
 
@@ -75,7 +74,7 @@ const PageRoutes = () => {
         },
         {
           path: 'invoice-list', //Category listing page under layout
-          element: <InvoiceListing />, 
+          element: <InvoiceListingWrapper />, 
         },
         {
           path: 'invoice-list/add-invoice', //Category listing page under layout

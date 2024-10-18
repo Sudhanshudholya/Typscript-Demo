@@ -10,7 +10,7 @@ export type ProductFormValues = {
   // photo: string;
   product_Name: string;
   category: string;
-  quantity: string | number;
+  // quantity: string | number;
   mrp: string | number;
   rate: string | number;
 }
@@ -25,7 +25,7 @@ const AddProductWrapper = () => {
     // photo: '',
     product_Name: '',
     category: '',
-    quantity: '',
+    // quantity: '',
     mrp: '',
     rate: ''
   }
@@ -34,7 +34,7 @@ const AddProductWrapper = () => {
     // photo: string().required("Photo is required"),
     product_Name: string().required("Name is required"),
     category: string().required("category is required"),
-    quantity: number().required("Quantity is required"),
+    // quantity: number().required("Quantity is required"),
     mrp: number().required("MRP is required"),
     rate: number().required("Rate is required")
   })

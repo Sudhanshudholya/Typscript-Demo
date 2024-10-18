@@ -3,7 +3,7 @@ import { object, string } from 'yup';
 import { useNavigate } from 'react-router-dom';
 import { Form, Formik } from 'formik';
 import toasts from '../../../Toasts/Toasts';
-import { useAddCustomerMutation } from '../../../Slice/Customerslice';
+import { useAddCustomerMutation } from '../../../Slice/CustomerSlice';
 
 
 export type CustomerFormValues = {
@@ -26,8 +26,9 @@ const AddCustomerWrapper = () => {
         role: '',
     };
 
+
     const customerValidation = object({
-        name: string().required('Name is required'),
+        name: string().required('Name is required').transform(value => value.toLocaleUpperCase()),
         email: string().email('Invalid email format').required('Email is required'),
         contactNumber: string().required('Contact number  is required'),
         role: string().required('Role is required'),

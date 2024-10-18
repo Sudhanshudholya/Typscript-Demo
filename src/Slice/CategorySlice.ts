@@ -1,6 +1,6 @@
-import apiSlice from "./apiSlice";
+import ApiSlice from "./ApiSlice";
 
-export const CategorySlice = apiSlice.injectEndpoints({
+export const CategorySlice = ApiSlice.injectEndpoints({
   endpoints: (builder) => ({
 
     addCategory: builder.mutation({

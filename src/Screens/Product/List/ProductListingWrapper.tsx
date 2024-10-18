@@ -10,6 +10,7 @@ const ProductListingWrapper = () => {
   const { data } = useGetProductQuery({ token })
 
   const handleDelete = (id: string) => {
+    
     Swal.fire({
       title: 'Are you sure?',
       text: "Do you really want to delete this product?",

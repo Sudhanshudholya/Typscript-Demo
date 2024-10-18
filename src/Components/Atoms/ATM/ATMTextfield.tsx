@@ -1,8 +1,8 @@
 type Props = {
-    value: string;
     name: string;
-    label: string;
+    value: string;
     onChange: (event: any) => void;
+    label: string;
     placeholder: string;
     className?: string; 
     

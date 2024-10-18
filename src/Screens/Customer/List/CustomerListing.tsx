@@ -64,8 +64,8 @@ const CustomerListing = ({ data, onDelete }: CustomerListingProps) => {
 
                     {/* Table to display customer details */}
                     <table className="min-w-full bg-white border">
-                        <thead className="bg-gray-200">
-                            <tr style={{ textAlign: "center" }} className='text-slate-600'>
+                        <thead className="bg-gray-500">
+                            <tr style={{ textAlign: "center" }} className='text-white'>
                                 <th className="py-2 px-4 border-b">Name</th>
                                 <th className="py-2 px-4 border-b">Email</th>
                                 <th className="py-2 px-4 border-b">Contact Number</th>
@@ -77,10 +77,10 @@ const CustomerListing = ({ data, onDelete }: CustomerListingProps) => {
                             {currentCustomers?.length > 0 ? (
                                 currentCustomers.map((customer: any) => (
                                     <tr key={customer._id} style={{ textAlign: "center" }} className='text-slate-900'>
-                                        <td className="py-2 px-4 border-b">{customer.name}</td>
-                                        <td className="py-2 px-4 border-b">{customer.email}</td>
+                                        <td className="py-2 px-4 border-b capitalize">{customer.name}</td>
+                                        <td className="py-2 px-4 border-b lowercase">{customer.email}</td>
                                         <td className="py-2 px-4 border-b">{customer.contactNumber}</td>
-                                        <td className="py-2 px-4 border-b">{customer.role}</td>
+                                        <td className="py-2 px-4 border-b capitalize">{customer.role}</td>
                                         <td className="py-2 px-4 border-b">
                                             <Link to={`edit-customer/${customer._id}`}>
                                                 <button className="mr-2 bg-blue-500 text-white px-4 py-1 rounded">

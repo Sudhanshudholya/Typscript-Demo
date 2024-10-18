@@ -79,7 +79,7 @@ const ProductFormLayout = ({ formikProps, heading, buttonName }: Props) => {
 
                 {/* Quantity */}
 
-                <div className="mb-4">
+                {/* <div className="mb-4">
                     <ATMNumberfield
                         label="Quantity"
                         placeholder="Enter product quantity"
@@ -89,7 +89,7 @@ const ProductFormLayout = ({ formikProps, heading, buttonName }: Props) => {
                         className="w-full"
                     />
                     <p className='text-red-400'><ErrorMessage name='quantity' /></p>
-                </div>
+                </div> */}
 
                 {/* MRP */}
                 <div className="mb-4">

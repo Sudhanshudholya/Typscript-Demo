@@ -9,7 +9,7 @@ type Props = {
 
 const Login = ({ formikProps }: Props) => {
 
-  const { values, handleChange, isSubmitting, handleSubmit } = formikProps;
+  const { values, handleChange, isSubmitting} = formikProps;
 
   // State to toggle password visibility
   const [showPassword, setShowPassword] = useState(false);
@@ -22,7 +22,7 @@ const Login = ({ formikProps }: Props) => {
 
         {/* Username */}
         <div className='flex flex-col gap-1'>
-          
+
           <label>
             <span className='flex items-center gap-1'>
               <FaUser />
@@ -77,7 +77,7 @@ const Login = ({ formikProps }: Props) => {
             type='submit'
             disabled={isSubmitting} // Disable the button while submitting
           >
-            {isSubmitting ? "Logging in..." : "Admin Login"}
+            {isSubmitting ? "Logging in..." : " Login"}
           </button>
         </div>
 

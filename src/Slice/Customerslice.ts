@@ -1,6 +1,6 @@
-import apiSlice from "./apiSlice";
+import ApiSlice from "./ApiSlice";
 
-export const Customerslice = apiSlice.injectEndpoints({
+export const CustomerSlice = ApiSlice.injectEndpoints({
 
   endpoints: (builder) => ({
 
@@ -24,10 +24,10 @@ export const Customerslice = apiSlice.injectEndpoints({
     }),
 
     getSingleCustomer: builder.query({
-      query: ({token, id}: any) => ({
-      url: `users/getUserById/${id}`,
-      method: 'GET',
-      headers: {"x-access-token" : token},
+      query: ({ token, id }: any) => ({
+        url: `users/getUserById/${id}`,
+        method: 'GET',
+        headers: { "x-access-token": token },
       }),
       providesTags: ['customer']
     }),
@@ -50,11 +50,10 @@ export const Customerslice = apiSlice.injectEndpoints({
         headers: { "x-access-token": token },
       }),
       invalidatesTags: ['customer']
-
     }),
 
   }),
 });
 
-export const { useAddCustomerMutation, useGetCustomerQuery, useGetSingleCustomerQuery, useDeleteCustomerMutation, useEditCustomerMutation } = Customerslice
+export const { useAddCustomerMutation, useGetCustomerQuery, useGetSingleCustomerQuery, useDeleteCustomerMutation, useEditCustomerMutation } = CustomerSlice
 

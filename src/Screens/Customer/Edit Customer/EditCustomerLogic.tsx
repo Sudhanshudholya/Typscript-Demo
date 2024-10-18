@@ -2,7 +2,7 @@ import CustomerFormLayout from '../Layout/CustomerFormLayout';
 import { object, string } from 'yup';
 import { Form, Formik } from 'formik';
 import { useNavigate, useParams } from 'react-router-dom';
-import { useEditCustomerMutation, useGetSingleCustomerQuery } from '../../../Slice/Customerslice';
+import { useEditCustomerMutation, useGetSingleCustomerQuery } from '../../../Slice/CustomerSlice';
 import toasts from '../../../Toasts/Toasts';
 
 export type CustomerFormValues = {

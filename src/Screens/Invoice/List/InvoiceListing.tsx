@@ -4,6 +4,7 @@ import { Link, Outlet, useLocation } from 'react-router-dom';
 import { useState } from 'react';
 
 const InvoiceListing = ({ onDelete }: { onDelete: (id: string) => void }) => {
+    
     const location = useLocation();
 
     // Dummy data for invoices
@@ -86,8 +87,8 @@ const InvoiceListing = ({ onDelete }: { onDelete: (id: string) => void }) => {
                             </Link>
                         </div>
                         <table className="min-w-full bg-white border">
-                            <thead className="min-w-full bg-white border">
-                                <tr style={{ textAlign: 'center' }} className="text-slate-600">
+                            <thead className="min-w-full bg-gray-500 border">
+                                <tr style={{ textAlign: 'center' }} className="text-white">
                                     <th className="py-2 px-4 border-b">Date</th>
                                     <th className="py-2 px-4 border-b">Invoice No</th>
                                     <th className="py-2 px-4 border-b">Customer</th>
@@ -137,7 +138,8 @@ const InvoiceListing = ({ onDelete }: { onDelete: (id: string) => void }) => {
                                 className={`px-4 py-2 bg-gray-200 rounded ${currentPage === 1 ? 'opacity-50 cursor-not-allowed' : ''
                                     }`}
                                 onClick={handlePrevious}
-                                disabled={currentPage === 1}
+                                // disabled={currentPage === 1}
+                                disabled={currentPage === totalPages}
                             >
                                 Previous
                             </button>

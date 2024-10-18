@@ -1,5 +1,5 @@
 import Swal from 'sweetalert2';
-import { useDeleteCustomerMutation, useGetCustomerQuery } from '../../../Slice/Customerslice'
+import { useDeleteCustomerMutation, useGetCustomerQuery } from '../../../Slice/CustomerSlice'
 import CustomerListing from './CustomerListing'
 
 const CustomerListingWrapper = () => {
